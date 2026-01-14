@@ -3,6 +3,7 @@
 using Temporalio.Client;
 using Temporalio.Worker;
 using Temporalio.MoneyTransferProject.MoneyTransferWorker;
+using Temporalio.Common;
 
 // Create a client to connect to localhost on "default" namespace
 var client = await TemporalClient.ConnectAsync(new("localhost:7233"));
@@ -19,16 +20,30 @@ Console.CancelKeyPress += (_, eventArgs) =>
 // If we had all static activities, we could just reference those directly.
 var activities = new BankingActivities();
 
+// Worker Versioning Informations
+const string deploymentName = "money-transfer";
+const string buildId = "1.0";
+
+WorkerDeploymentOptions workerDeploymentOptions = new WorkerDeploymentOptions
+{
+    UseWorkerVersioning = true,
+    DefaultVersioningBehavior = VersioningBehavior.AutoUpgrade,
+    Version = new WorkerDeploymentVersion(deploymentName, buildId)
+};
+
+TemporalWorkerOptions temporalWorkerOptions = new TemporalWorkerOptions(taskQueue: "MONEY_TRANSFER_TASK_QUEUE")
+    .AddAllActivities(activities) // Register activities
+    .AddWorkflow<MoneyTransferWorkflow>(); // Register workflow
+temporalWorkerOptions.DeploymentOptions = workerDeploymentOptions;
+
 // Create a worker with the activity and workflow registered
 using var worker = new TemporalWorker(
     client, // client
-    new TemporalWorkerOptions(taskQueue: "MONEY_TRANSFER_TASK_QUEUE")
-        .AddAllActivities(activities) // Register activities
-        .AddWorkflow<MoneyTransferWorkflow>() // Register workflow
+    temporalWorkerOptions
 );
 
 // Run the worker until it's cancelled
-Console.WriteLine("Running worker...");
+Console.WriteLine($"Running worker with deployment name: {deploymentName} and buildId: {buildId}...");
 try
 {
     await worker.ExecuteAsync(tokenSource.Token);
