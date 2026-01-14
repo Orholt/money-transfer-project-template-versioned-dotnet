@@ -1,19 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11408.102 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyTransferWorker", "MoneyTransferWorker\MoneyTransferWorker.csproj", "{77CC1E9B-6CD4-49AE-A9DF-315AFC55EF0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyTransferClient", "MoneyTransferClient\MoneyTransferClient.csproj", "{990F8C6F-D9F7-4348-B8F7-5A9C1F20F23D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{58FDDADF-123A-466E-86ED-2335B925156C}"
+	ProjectSection(SolutionItems) = preProject
+		rolling-changes.md = rolling-changes.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{77CC1E9B-6CD4-49AE-A9DF-315AFC55EF0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -24,5 +26,11 @@ Global
 		{990F8C6F-D9F7-4348-B8F7-5A9C1F20F23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{990F8C6F-D9F7-4348-B8F7-5A9C1F20F23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{990F8C6F-D9F7-4348-B8F7-5A9C1F20F23D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26855B9C-27DF-43C2-85BE-4627AB1440CF}
 	EndGlobalSection
 EndGlobal
