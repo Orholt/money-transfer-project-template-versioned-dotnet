@@ -4,7 +4,7 @@
 
 Before running this application, ensure you have the following installed:
 
-* [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) or later
+* [.NET 10.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) or later
 * [Temporal CLI](https://learn.temporal.io/getting_started/dotnet/dev_environment/)
 
 ## Steps to get started
@@ -21,6 +21,20 @@ git clone https://github.com/temporalio/money-transfer-project-template-dotnet
 
 cd money-transfer-project-template-dotnet
 ```
+
+## Run The Server
+Run the following command to start the Temporal server in development mode:
+
+1. Go into `/TemporalServer` directory
+
+   ```bash
+   cd TemporalServer
+   ```
+2. Run the following command to start the Temporal server
+
+   ```bash
+   docker compose up -d
+   ```
 
 ## Run The Workflow
 Run the following commands to initiate the Workflow that starts the money transfer process.
